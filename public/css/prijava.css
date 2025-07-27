@@ -1,0 +1,82 @@
+body {
+    background-color: #fdf1d3;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 60px; 
+}
+
+#formaDugme {
+    max-width: 400px; /* Maksimalna širina forme */
+    margin: 50px auto; /* Centriranje forme */
+    padding: 20px; /* Padding unutar forme */
+    background-color: white; /* Pozadinska boja forme */
+    border-radius: 8px; /* Zaobljene ivice */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Senka */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Vertikalno raspoređivanje elemenata */
+}
+
+label {
+    margin-bottom: 5px; /* Razmak ispod labela */
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px; /* Padding unutar input polja */
+    margin-bottom: 15px; /* Razmak ispod input polja */
+    border: 1px solid #ccc; /* Okvir input polja */
+    border-radius: 4px; /* Zaobljene ivice */
+}
+
+button {
+    background-color: #4CAF50; /* Zeleni pozadinski boja */
+    color: white; /* Bijela boja teksta */
+    padding: 10px; /* Padding unutar dugmeta */
+    border: none; /* Bez okvira */
+    border-radius: 4px; /* Zaobljene ivice */
+    cursor: pointer; /* Kursor u obliku ruke */
+    transition: background-color 0.3s; /* Efekat prelaza */
+}
+
+button:hover {
+    background-color: #45a049; /* Tamnija nijansa pri hoveru */
+}
+
+#areaBelow {
+    text-align: center;
+    color: red; /* Crvena boja za greške */
+    margin-top: 10px; /* Razmak iznad */
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: #ff9900;
+}

@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf1d3;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+iframe {
+    border: none;
+    width: 100%;
+    height: 60px; 
+    }
+  
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.upit-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.nekretnina-info {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.nekretnina-slika {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.osnovni-podaci {
+    flex: 1;
+}
+
+.osnovni-podaci h3 {
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.cijena {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.lokacija, .kvadratura {
+    color: #7f8c8d;
+    margin: 5px 0;
+}
+
+.upiti-lista {
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.upiti-lista h4 {
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.upit-text {
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border-left: 3px solid #3498db;
+}
+
+.upit-text p {
+    margin: 0;
+    color: #34495e;
+}
+
+.no-upiti {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 20px;
+}

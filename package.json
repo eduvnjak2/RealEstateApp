@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.12.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.5"
+  },
+  "name": "wt-spirala",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init-db": "node scripts/initDb.js",
+    "migrate-data": "node scripts/migrateData.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://eduvnjak2@bitbucket.org/etf-id/wt24p19368.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/etf-id/wt24p19368/issues"
+  },
+  "homepage": "https://bitbucket.org/etf-id/wt24p19368#readme"
+}

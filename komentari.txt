@@ -1,0 +1,4 @@
+1. zadatak nije radilo otvaranje linkova bez dodavanja target _parent
+2. zadatak nije bilo moguće centrirati kartice kod stanova i kuća kada se pređe na flex
+3. zadatak sve ok 
+4. problem kod ekrana manjih od 800px morao sam rucno odrediti u kojoj koloni i redu se nalazi koja vijest 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="bs-BA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalji</title>
+    <link rel="stylesheet" type="text/css" href="../css/detalji.css">
+</head>
+
+<body>
+    <iframe src="meni.html"></iframe>
+    <div id="osnovno">
+        <img id="slikaNekretnine" src="" alt="Nekretnina">
+        <p><strong>Naziv:</strong> <span id="nazivNekretnine"></span></p>
+        <p><strong>Kvadratura:</strong> <span id="kvadraturaNekretnine"></span> m²</p>
+        <p><strong>Cijena:</strong> <span id="cijenaNekretnine"></span> KM</p>
+    </div>
+
+    <h3>DETALJI</h3>
+    <div id="detalji">
+        <div id="kolona1">
+            <p><strong>Tip grijanja:</strong> <span id="tipGrijanja"></span></p>
+            <p><strong>Lokacija:</strong> <a href="#" id="lokacijaLink"></a></p>
+        </div>
+        <div id="kolona2">
+            <p><strong>Godina izgradnje:</strong> <span id="godinaIzgradnje"></span></p>
+            <p><strong>Datum objave oglasa:</strong> <span id="datumObjave"></span></p>
+        </div>
+        <div id="opis">
+            <p><strong>Opis:</strong> <span id="opisNekretnine"></span></p>
+        </div>
+    </div>
+
+    <h3>UPITI</h3>
+    <div id="upiti">
+        <!-- Upiti će biti dinamički dodani -->
+    </div>
+    <div id="navigacija">
+        <button class="prev-btn">Prethodni</button>
+        <button class="next-btn">Sljedeći</button>
+    </div>
+
+    <!-- Kontejner za top 5 nekretnina -->
+    <div id="top5-container" style="display: none;">
+        <h3>TOP 5 NEKRETNINA</h3>
+        <div id="listaTop5"></div>
+    </div>
+
+    <script src="../scripts/PoziviAjax.js"></script>
+    <script src="../scripts/detalji.js"></script>
+    <script src="../scripts/carousel.js"></script>
+</body>
+
+</html>
