@@ -111,7 +111,7 @@ const PoziviAjax = (() => {
                 fnCallback(ajax.statusText, null)
             }
         }
-        ajax.open("POST", "http://localhost:3000/login", true)
+        ajax.open("POST", "/login", true)
         ajax.setRequestHeader("Content-Type", "application/json")
         var objekat = {
             "username": username,
@@ -133,7 +133,7 @@ const PoziviAjax = (() => {
                 fnCallback(ajax.statusText, null)
             }
         }
-        ajax.open("POST", "http://localhost:3000/logout", true)
+        ajax.open("POST", "/logout", true)
         ajax.send()
     }
 
