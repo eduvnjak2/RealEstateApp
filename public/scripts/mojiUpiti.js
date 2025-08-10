@@ -3,7 +3,7 @@ function prikaziUpite(upiti) {
     container.innerHTML = '';
 
     if (upiti.length === 0) {
-        container.innerHTML = '<p class="no-upiti">Nemate nijedan upit.</p>';
+        container.innerHTML = '<div class="no-inquiries"><h3>Nemate nijedan upit</h3><p>Još niste poslali nijedan upit za nekretnine.</p></div>';
         return;
     }
 
@@ -22,23 +22,24 @@ function prikaziUpite(upiti) {
     // Prikazi svaku nekretninu sa upitima
     Object.values(upitiPoNekretninama).forEach(nekretninaGrupa => {
         const karticaDiv = document.createElement('div');
-        karticaDiv.className = 'upit-card';
+        karticaDiv.className = 'inquiry-item';
         
         karticaDiv.innerHTML = `
-            <div class="nekretnina-info">
-                <div class="osnovni-podaci">
+            <div class="property-info">
+                <img src="${nekretninaGrupa.nekretnina.slika || '../resources/1.jpg'}" alt="Nekretnina" class="property-image">
+                <div class="property-details">
                     <h3>${nekretninaGrupa.nekretnina.naziv}</h3>
-                    <p class="cijena">Cijena: ${nekretninaGrupa.nekretnina.cijena} KM</p>
-                    <p class="lokacija">Lokacija: ${nekretninaGrupa.nekretnina.lokacija}</p>
-                    <p class="kvadratura">Kvadratura: ${nekretninaGrupa.nekretnina.kvadratura} m²</p>
+                    <p>Cijena: ${nekretninaGrupa.nekretnina.cijena} KM</p>
+                    <p>Lokacija: ${nekretninaGrupa.nekretnina.lokacija}</p>
+                    <p>Kvadratura: ${nekretninaGrupa.nekretnina.kvadratura} m²</p>
                 </div>
             </div>
-            <div class="upiti-lista">
+            <div class="inquiry-content">
                 <h4>Moji upiti za ovu nekretninu:</h4>
                 ${nekretninaGrupa.upiti.map(upit => `
-                    <div class="upit-text">
+                    <div class="inquiry-text">
                         <p>${upit.tekst_upita}</p>
-                        <small>Datum upita: ${new Date(upit.createdAt).toLocaleDateString()}</small>
+                        <div class="inquiry-date">Datum upita: ${new Date(upit.createdAt).toLocaleDateString()}</div>
                     </div>
                 `).join('')}
             </div>

@@ -1,99 +1,136 @@
 body {
-    background-color: #fdf1d3;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0; 
+    padding: 0;
+    min-height: 100vh;
 }
 
 iframe {
     border: none; 
     width: 100%;
     height: 60px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #search-container {
-    margin: 20px; /* Dodajte marginu oko pretrage */
-    padding: 20px; /* Dodajte padding unutar pretrage */
-    background-color: white; /* Opcionalno, dodajte pozadinsku boju */
-    border-radius: 5px; /* Zaokružite ivice */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Dodajte senku */
+    margin: 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tip-nekretnine { 
-    text-align: center; /* Centriranje teksta */
-    font-weight: bold;
-    font-size: 36px;
-    padding: 10px; /* Dodajte padding oko naslova */
-    width: 100%; /* Osigurajte da zauzima cijelu širinu */
-    margin: 20px 0; /* Dodajte marginu iznad i ispod naslova */
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
+    padding: 20px;
+    width: 100%;
+    margin: 20px 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .grid-lista-nekretnina {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     padding: 20px;
-    justify-content: flex-start;
+    justify-content: center;
     align-content: flex-start; 
 }
 
 .nekretnina {
-    border: 2px solid #000;
-    padding: 30px;
-    background-color: white;
+    border: none;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
     text-align: center;
-    min-width: 236px;
-    max-width: 236px;
-    height: 400px;  
-    margin: 10px; /* Dodajte marginu oko svake nekretnine */
+    min-width: 280px;
+    max-width: 280px;
+    height: 420px;  
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nekretnina:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .nekretnina.kuca {
-    background-color: powderblue; 
-}
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+} 
 
 .nekretnina.pp {
-    background-color: green;
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
 }
 
 .slika-nekretnine {
     max-width: 100%;
     height: 50%;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .detalji-nekretnine {
     text-align: left;
+    margin-top: 15px;
 }
 
 .detalji-nekretnine h3 {
-    margin: 0;
+    margin: 0 0 10px 0;
     white-space: nowrap;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .detalji-nekretnine p {
-    margin: 5px 0;
+    margin: 8px 0;
+    color: #555;
+    font-size: 0.9rem;
 }
 
 .cijena-nekretnine {
     text-align: right;
+    font-weight: 700;
+    color: #e74c3c;
+    font-size: 1.1rem;
+    margin-top: 10px;
 }
 
 .detalji-dugme {
     margin: 20px auto;
-    background-color: #ff9900;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     text-decoration: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
 }
 
-/* Dodajte novi stil za top 5 prikaz */
+.detalji-dugme:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
 #top5 .nekretnina {
-    background-color: white; /* Resetujte pozadinu za sve nekretnine u top5 */
+    background: rgba(255, 255, 255, 0.95);
 }
 
 #top5 .nekretnina[data-tip="Poslovni prostor"] {
-    background-color: green; /* Samo poslovni prostori u top5 će biti zeleni */
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
 }
