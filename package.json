@@ -14,7 +14,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node scripts/initDb.js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "init-db": "node scripts/initDb.js",
     "migrate-data": "node scripts/migrateData.js"
