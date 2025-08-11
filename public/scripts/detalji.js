@@ -43,6 +43,22 @@ let sviUpitiUcitani = false;
 let trenutniUpiti = [];
 let trenutniIndex = 0;
 
+function mapirajUpiteIzNekretnine(nekretnina) {
+    // DB (Sequelize) vraća niz pod ključem Upits sa poljima tekst/KorisnikId
+    if (Array.isArray(nekretnina.Upits)) {
+        return nekretnina.Upits.map(u => ({
+            korisnik_id: u.KorisnikId,
+            tekst_upita: u.tekst,
+            createdAt: u.createdAt
+        }));
+    }
+    // Stara struktura (JSON fajl) – niz pod ključem upiti sa poljima tekst_upita/korisnik_id
+    if (Array.isArray(nekretnina.upiti)) {
+        return nekretnina.upiti;
+    }
+    return [];
+}
+
 function prikaziDetaljeNekretnine(nekretnina) {
     trenutnaStranica = 0;
     sviUpitiUcitani = false;
@@ -66,7 +82,8 @@ function prikaziDetaljeNekretnine(nekretnina) {
     document.getElementById('datumObjave').textContent = nekretnina.datum_objave;
     document.getElementById('opisNekretnine').textContent = nekretnina.opis;
 
-    trenutniUpiti = nekretnina.upiti.slice(0, 3).reverse();
+    const upitiIzModela = mapirajUpiteIzNekretnine(nekretnina);
+    trenutniUpiti = upitiIzModela.slice(0, 3).reverse();
     prikaziUpiteUCarouselu(nekretnina.id, true);
 }
 
