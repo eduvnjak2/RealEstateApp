@@ -157,18 +157,23 @@ function prikaziFormuZaInteresovanje() {
             return; // Ne prikazuj formu ako korisnik nije prijavljen
         }
 
+        const target = document.getElementById('interesovanja');
         const formaContainer = document.createElement('div');
+        formaContainer.className = 'interest-card';
         formaContainer.innerHTML = `
-            <h3>Novo interesovanje</h3>
-            <select id="tipInteresovanja">
-                <option value="upit">Upit</option>
-                <option value="zahtjev">Zahtjev</option>
-                <option value="ponuda">Ponuda</option>
-            </select>
-            <div id="formaPolja"></div>
+            <h3 class="interest-title">Novo interesovanje</h3>
+            <div class="interest-form">
+                <label for="tipInteresovanja">Tip</label>
+                <select id="tipInteresovanja" class="interest-select">
+                    <option value="upit">Upit</option>
+                    <option value="zahtjev">Zahtjev</option>
+                    <option value="ponuda">Ponuda</option>
+                </select>
+                <div id="formaPolja" class="interest-fields"></div>
+            </div>
         `;
 
-        document.body.appendChild(formaContainer);
+        target.appendChild(formaContainer);
 
         document.getElementById('tipInteresovanja').addEventListener('change', function(e) {
             prikaziPoljaForme(e.target.value);
@@ -186,96 +191,58 @@ function prikaziPoljaForme(tip) {
     switch(tip) {
         case 'upit':
             formaPolja.innerHTML = `
-                <textarea id="tekstUpita" placeholder="Unesite tekst upita"></textarea>
-                <button onclick="posaljiUpit()">Pošalji upit</button>
+                <textarea id="tekstUpita" class="interest-textarea" placeholder="Unesite tekst upita"></textarea>
+                <button class="submit-btn" onclick="posaljiUpit()">Pošalji upit</button>
             `;
             break;
         case 'zahtjev':
             formaPolja.innerHTML = `
-                <textarea id="tekstZahtjeva" placeholder="Unesite tekst zahtjeva"></textarea>
-                <input type="date" id="trazeniDatum">
-                <button onclick="posaljiZahtjev()">Pošalji zahtjev</button>
+                <textarea id="tekstZahtjeva" class="interest-textarea" placeholder="Unesite tekst zahtjeva"></textarea>
+                <input type="date" id="trazeniDatum" class="interest-input">
+                <button class="submit-btn" onclick="posaljiZahtjev()">Pošalji zahtjev</button>
             `;
             break;
-            case 'ponuda':
-                PoziviAjax.getKorisnik(function(err, korisnik) {
-                    if (err || !korisnik) {
-                        console.error('Greška pri dohvatanju korisnika:', err);
+        case 'ponuda':
+            PoziviAjax.getKorisnik(function(err, korisnik) {
+                if (err || !korisnik) {
+                    console.error('Greška pri dohvatanju korisnika:', err);
+                    return;
+                }
+
+                PoziviAjax.getInteresovanja(nekretninaId, function(err, interesovanja) {
+                    if (err) {
+                        console.error('Greška pri dohvatanju interesovanja:', err);
                         return;
                     }
-            
-                    PoziviAjax.getInteresovanja(nekretninaId, function(err, interesovanja) {
-                        if (err) {
-                            console.error('Greška pri dohvatanju interesovanja:', err);
-                            return;
-                        }
-            
-                        // Konvertuj string u JSON ako je potrebno
-                        const data = typeof interesovanja === 'string' ? 
-                                    JSON.parse(interesovanja) : 
-                                    interesovanja;
-            
-                        // Filtriraj samo ponude i aktivne ponude
-                        let ponude = data.filter(i => 
-                            i.tip === 'Ponuda' && 
-                            !i.odbijenaPonuda
-                        );
-            
-                        // Za obične korisnike - samo njihove ponude
-                        if (!korisnik.admin) {
-                            ponude = ponude.filter(p => 
-                                p.Korisnik && 
-                                p.Korisnik.id === korisnik.id
-                            );
-                        }
-            
-                        // Kreiraj dropdown
-                        let dropdownHTML = '<select id="vezanaPonuda"';
-                        dropdownHTML += ' class="form-control mb-2">';
-                        dropdownHTML += '<option value="">Nova ponuda</option>';
-                        
-                        ponude.forEach(p => {
-                            const cijena = p.cijenaPonude ? 
-                                         `${p.cijenaPonude} KM` : 
-                                         '---';
-                            dropdownHTML += `
-                                <option value="${p.id}">
-                                    Ponuda #${p.id} (${cijena})
-                                </option>
-                            `;
-                        });
-                        
-                        dropdownHTML += '</select>';
-            
-                        // Prikazi formu
-                        formaPolja.innerHTML = `
-                            <div class="form-group">
-                                <textarea id="tekstPonude" 
-                                    class="form-control mb-2"
-                                    placeholder="Tekst ponude"
-                                    required></textarea>
-                                <input type="number" 
-                                    id="cijenaPonude"
-                                    class="form-control mb-2" 
-                                    placeholder="Cijena u KM"
-                                    step="0.01"
-                                    required>
-                                <label>Vezana ponuda:</label>
-                                ${dropdownHTML}
-                                <button class="btn btn-primary mt-2" 
-                                    onclick="posaljiPonudu()">
-                                    Pošalji ponudu
-                                </button>
-                            </div>
-                        `;
-            
-                        // Disable-uj dropdown ako nema ponuda za običnog korisnika
-                        if (!korisnik.admin && ponude.length === 0) {
-                            document.getElementById('vezanaPonuda').disabled = true;
-                        }
+
+                    const data = typeof interesovanja === 'string' ? JSON.parse(interesovanja) : interesovanja;
+                    let ponude = data.filter(i => i.tip === 'Ponuda' && !i.odbijenaPonuda);
+                    if (!korisnik.admin) {
+                        ponude = ponude.filter(p => p.Korisnik && p.Korisnik.id === korisnik.id);
+                    }
+
+                    let dropdownHTML = '<select id="vezanaPonuda" class="interest-select">';
+                    dropdownHTML += '<option value="">Nova ponuda</option>';
+                    ponude.forEach(p => {
+                        const cijena = p.cijenaPonude ? `${p.cijenaPonude} KM` : '---';
+                        dropdownHTML += `<option value="${p.id}">Ponuda #${p.id} (${cijena})</option>`;
                     });
+                    dropdownHTML += '</select>';
+
+                    formaPolja.innerHTML = `
+                        <textarea id="tekstPonude" class="interest-textarea" placeholder="Tekst ponude" required></textarea>
+                        <input type="number" id="cijenaPonude" class="interest-input" placeholder="Cijena u KM" step="0.01" required>
+                        <label>Vezana ponuda:</label>
+                        ${dropdownHTML}
+                        <button class="submit-btn" onclick="posaljiPonudu()">Pošalji ponudu</button>
+                    `;
+
+                    if (!korisnik.admin && ponude.length === 0) {
+                        document.getElementById('vezanaPonuda').disabled = true;
+                    }
                 });
-                break;
+            });
+            break;
     }
 }
 
