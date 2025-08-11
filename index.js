@@ -576,7 +576,7 @@ app.post('/nekretnina/:id/ponuda', async (req, res) => {
             odbijenaPonuda,
             vezanaPonudaId: idVezanePonude,
             KorisnikId: korisnik.id,
-            NekretnineId: nekretnina.id
+            NekretninaId: nekretnina.id
         });
 
         res.status(201).json(novaPonuda);
@@ -609,7 +609,7 @@ app.post('/nekretnina/:id/zahtjev', async (req, res) => {
             tekst,
             trazeniDatum,
             KorisnikId: korisnik.id,
-            NekretnineId: nekretnina.id
+            NekretninaId: nekretnina.id
         });
 
         res.status(201).json(noviZahtjev);
@@ -635,7 +635,7 @@ app.put('/nekretnina/:id/zahtjev/:zid', async (req, res) => {
       const zahtjev = await Zahtjev.findOne({
           where: {
               id: zid,
-              NekretnineId: id
+              NekretninaId: id
           }
       });
 
@@ -678,7 +678,7 @@ app.post('/nekretnina/:id/upit', async (req, res) => {
         const noviUpit = await Upit.create({
             tekst,
             KorisnikId: korisnik.id,
-            NekretnineId: nekretnina.id
+            NekretninaId: nekretnina.id
         });
 
         res.status(201).json(noviUpit);

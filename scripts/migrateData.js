@@ -41,7 +41,7 @@ async function migrateData() {
                 await Upit.create({
                     tekst: upit.tekst_upita,
                     KorisnikId: upit.korisnik_id,
-                    NekretnineId: createdNekretnina.id
+                    NekretninaId: createdNekretnina.id
                 });
             }
         }

@@ -48,7 +48,7 @@ router.get('/next/upiti/nekretnina/:id', async (req, res) => {
 
     try {
         const upiti = await Upit.findAll({
-            where: { NekretnineId: id },
+            where: { NekretninaId: id },
             limit,
             offset,
             order: [['createdAt', 'DESC']]
