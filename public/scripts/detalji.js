@@ -48,7 +48,7 @@ function prikaziDetaljeNekretnine(nekretnina) {
     sviUpitiUcitani = false;
     trenutniIndex = 0;
 
-    document.getElementById('slikaNekretnine').src = `../Resources/${nekretnina.id}.jpg`;
+    document.getElementById('slikaNekretnine').src = `../resources/${nekretnina.id}.jpg`;
     document.getElementById('nazivNekretnine').textContent = nekretnina.naziv;
     document.getElementById('kvadraturaNekretnine').textContent = nekretnina.kvadratura;
     document.getElementById('cijenaNekretnine').textContent = nekretnina.cijena;

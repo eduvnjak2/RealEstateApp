@@ -10,41 +10,57 @@
 
 <body>
     <iframe src="meni.html"></iframe>
-    <div id="osnovno">
-        <img id="slikaNekretnine" src="" alt="Nekretnina">
-        <p><strong>Naziv:</strong> <span id="nazivNekretnine"></span></p>
-        <p><strong>Kvadratura:</strong> <span id="kvadraturaNekretnine"></span> m²</p>
-        <p><strong>Cijena:</strong> <span id="cijenaNekretnine"></span> KM</p>
-    </div>
 
-    <h3>DETALJI</h3>
-    <div id="detalji">
-        <div id="kolona1">
-            <p><strong>Tip grijanja:</strong> <span id="tipGrijanja"></span></p>
-            <p><strong>Lokacija:</strong> <a href="#" id="lokacijaLink"></a></p>
+    <div class="container">
+        <div class="property-header">
+            <div class="property-image">
+                <img id="slikaNekretnine" src="" alt="Nekretnina">
+            </div>
+            <div class="property-info">
+                <h1 class="property-title"><span id="nazivNekretnine"></span></h1>
+                <div class="property-price"><span id="cijenaNekretnine"></span> KM</div>
+                <div class="property-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Kvadratura</div>
+                        <div class="detail-value"><span id="kvadraturaNekretnine"></span> m²</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Tip grijanja</div>
+                        <div class="detail-value"><span id="tipGrijanja"></span></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Lokacija</div>
+                        <div class="detail-value"><a href="#" id="lokacijaLink"></a></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Godina izgradnje</div>
+                        <div class="detail-value"><span id="godinaIzgradnje"></span></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Datum objave</div>
+                        <div class="detail-value"><span id="datumObjave"></span></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="kolona2">
-            <p><strong>Godina izgradnje:</strong> <span id="godinaIzgradnje"></span></p>
-            <p><strong>Datum objave oglasa:</strong> <span id="datumObjave"></span></p>
-        </div>
-        <div id="opis">
-            <p><strong>Opis:</strong> <span id="opisNekretnine"></span></p>
-        </div>
-    </div>
 
-    <h3>UPITI</h3>
-    <div id="upiti">
-        <!-- Upiti će biti dinamički dodani -->
-    </div>
-    <div id="navigacija">
-        <button class="prev-btn">Prethodni</button>
-        <button class="next-btn">Sljedeći</button>
-    </div>
+        <div class="property-description">
+            <strong>Opis:</strong> <span id="opisNekretnine"></span>
+        </div>
 
-    <!-- Kontejner za top 5 nekretnina -->
-    <div id="top5-container" style="display: none;">
-        <h3>TOP 5 NEKRETNINA</h3>
-        <div id="listaTop5"></div>
+        <div class="inquiries-section">
+            <div class="inquiries-title">UPITI</div>
+            <div id="upiti"></div>
+            <div id="navigacija">
+                <button class="prev-btn submit-btn" type="button">Prethodni</button>
+                <button class="next-btn submit-btn" type="button">Sljedeći</button>
+            </div>
+        </div>
+
+        <div id="top5-container" style="display: none;">
+            <h3>TOP 5 NEKRETNINA</h3>
+            <div id="listaTop5"></div>
+        </div>
     </div>
 
     <script src="../scripts/PoziviAjax.js"></script>
