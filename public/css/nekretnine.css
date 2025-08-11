@@ -57,6 +57,8 @@ iframe {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .nekretnina:hover {
@@ -107,7 +109,7 @@ iframe {
 }
 
 .detalji-dugme {
-    margin: 20px auto;
+    margin-top: auto;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 12px 25px;
@@ -120,6 +122,7 @@ iframe {
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
+    align-self: center;
 }
 
 .detalji-dugme:hover {
